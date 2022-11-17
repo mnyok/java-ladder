@@ -17,7 +17,9 @@ public class App {
 
         Ladder ladder = new Ladder(height, names.size(), new RandomLadderConnectDecider());
 
-        ResultView.PrintResult(names, ladder, height, results);
+        ResultView.printNames(names);
+        ResultView.printLadder(ladder, names.size(), height);
+        ResultView.printResults(results);
 
         Map<Name, String> ladderResult = new LadderRunner(names, ladder).run(height, results);
 

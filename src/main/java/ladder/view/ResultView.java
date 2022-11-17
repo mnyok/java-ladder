@@ -11,26 +11,20 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void PrintResult(List<Name> names, Ladder ladder, int height, Results results) {
-        printNames(names);
-        printLadder(ladder, names.size(), height);
-        printResults(results);
-    }
-
-    private static void printNames(List<Name> names) {
+    public static void printNames(List<Name> names) {
         String nameString = names.stream()
                 .map(name -> String.format("%5s", name.getName()))
                 .collect(Collectors.joining(" "));
         System.out.println(nameString);
     }
 
-    private static void printLadder(Ladder ladder, int peopleCount, int height) {
+    public static void printLadder(Ladder ladder, int peopleCount, int height) {
         for (int i = 0; i < height; i++) {
             printHorizontalLine(ladder, peopleCount, i);
         }
     }
 
-    private static void printResults(Results results) {
+    public static void printResults(Results results) {
         String resultsString = results.stream()
                 .map(result -> String.format("%5.5s", result))
                 .collect(Collectors.joining(" "));
