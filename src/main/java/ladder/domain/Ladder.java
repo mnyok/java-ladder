@@ -7,13 +7,11 @@ import java.util.stream.IntStream;
 
 public class Ladder {
     private final List<Line> lines;
-    private final LadderConnectDecider ladderConnectDecider;
 
     public Ladder(int height, int peopleCount, LadderConnectDecider ladderConnectDecider) {
         validate(height);
-        this.ladderConnectDecider = ladderConnectDecider;
         lines = initLine(height, peopleCount);
-        buildLadder(height);
+        buildLadder(height, ladderConnectDecider);
     }
 
     private void validate(int height) {
@@ -28,19 +26,19 @@ public class Ladder {
                 .collect(Collectors.toList());
     }
 
-    private void buildLadder(int height) {
+    private void buildLadder(int height, LadderConnectDecider ladderConnectDecider) {
         for (int i = 0; i < height; i++) {
-            connectFloor();
+            connectFloor(ladderConnectDecider);
         }
     }
 
-    private void connectFloor() {
+    private void connectFloor(LadderConnectDecider ladderConnectDecider) {
         for (int lineNumber = 0; lineNumber < getLineSize() - 1; lineNumber++) {
-            connectLineIfPossible(lineNumber);
+            connectLineIfPossible(lineNumber, ladderConnectDecider);
         }
     }
 
-    private void connectLineIfPossible(int lineNumber) {
+    private void connectLineIfPossible(int lineNumber, LadderConnectDecider ladderConnectDecider) {
         if (!ladderConnectDecider.decide()) {
             return;
         }
