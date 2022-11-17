@@ -16,7 +16,7 @@ public class LadderRunnerTest {
         int height = 6;
         List<Name> names = List.of(new Name("a"), new Name("b"), new Name("c"), new Name("d"), new Name("e"));
         Ladder ladder = new Ladder(height, names.size(), () -> true);
-        List<String> results = List.of("1", "2", "3", "4", "5");
+        Results results = new Results(List.of("1", "2", "3", "4", "5"), names.size());
 
         Map<Name, String> ladderResult = new LadderRunner(names, ladder).run(height, results);
 

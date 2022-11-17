@@ -1,9 +1,6 @@
 package ladder;
 
-import ladder.domain.Ladder;
-import ladder.domain.LadderRunner;
-import ladder.domain.Name;
-import ladder.domain.RandomLadderConnectDecider;
+import ladder.domain.*;
 import ladder.view.InputView;
 import ladder.view.ResultView;
 
@@ -15,7 +12,7 @@ public class App {
 
     public static void main(String[] args) {
         List<Name> names = InputView.inputPeople();
-        List<String> results = InputView.inputResults();
+        Results results = new Results(InputView.inputResults(), names.size());
         int height = InputView.inputHeight();
 
         Ladder ladder = new Ladder(height, names.size(), new RandomLadderConnectDecider());

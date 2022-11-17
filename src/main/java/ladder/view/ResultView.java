@@ -3,6 +3,7 @@ package ladder.view;
 import ladder.domain.Ladder;
 import ladder.domain.Name;
 import ladder.domain.Point;
+import ladder.domain.Results;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class ResultView {
 
-    public static void PrintResult(List<Name> names, Ladder ladder, int height, List<String> results) {
+    public static void PrintResult(List<Name> names, Ladder ladder, int height, Results results) {
         printNames(names);
         printLadder(ladder, names.size(), height);
         printResults(results);
@@ -29,7 +30,7 @@ public class ResultView {
         }
     }
 
-    private static void printResults(List<String> results) {
+    private static void printResults(Results results) {
         String resultsString = results.stream()
                 .map(result -> String.format("%5.5s", result))
                 .collect(Collectors.joining(" "));
