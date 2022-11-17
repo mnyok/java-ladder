@@ -5,7 +5,6 @@ import ladder.view.InputView;
 import ladder.view.ResultView;
 
 import java.util.List;
-import java.util.Map;
 
 public class App {
     private static final String ALL = "all";
@@ -21,7 +20,7 @@ public class App {
         ResultView.printLadder(ladder, names.size(), height);
         ResultView.printResults(results);
 
-        Map<Name, String> ladderResult = new LadderRunner(names, ladder).run(height, results);
+        LadderRunResult ladderResult = new LadderRunner(names, ladder).run(height, results);
 
         Name name;
         do {
@@ -30,12 +29,12 @@ public class App {
         } while (!isEnd(name));
     }
 
-    private static void showResult(Name name, Map<Name, String> ladderResult) {
+    private static void showResult(Name name, LadderRunResult ladderResult) {
         if (name.equals(ALL)) {
             ResultView.printAllResult(ladderResult);
             return;
         }
-        ResultView.printPersonResult(ladderResult.get(name));
+        ResultView.printPersonResult(ladderResult, name);
     }
 
     private static boolean isEnd(Name input) {

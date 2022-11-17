@@ -1,8 +1,6 @@
 package ladder.domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LadderRunner {
     private final List<Name> names;
@@ -13,11 +11,11 @@ public class LadderRunner {
         this.ladder = ladder;
     }
 
-    public Map<Name, String> run(int height, Results results) {
-        Map<Name, String> ladderRunResult = new HashMap<>();
+    public LadderRunResult run(int height, Results results) {
+        LadderRunResult ladderRunResult = new LadderRunResult();
         for (int currentLine = 0; currentLine < names.size(); currentLine++) {
             Name name = names.get(currentLine);
-            ladderRunResult.put(name, results.get(getPersonResult(currentLine, height)));
+            ladderRunResult.add(name, results.get(getPersonResult(currentLine, height)));
         }
 
         return ladderRunResult;

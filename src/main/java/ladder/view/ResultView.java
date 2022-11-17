@@ -1,9 +1,6 @@
 package ladder.view;
 
-import ladder.domain.Ladder;
-import ladder.domain.Name;
-import ladder.domain.Point;
-import ladder.domain.Results;
+import ladder.domain.*;
 
 import java.util.List;
 import java.util.Map;
@@ -48,13 +45,15 @@ public class ResultView {
         System.out.print("     |");
     }
 
-    public static void printPersonResult(String result) {
-        System.out.println(result);
+    public static void printPersonResult(LadderRunResult ladderResult, Name name) {
+        for (String result: ladderResult.get(name)) {
+            System.out.print(result + " ");
+        }
         System.out.println();
     }
 
-    public static void printAllResult(Map<Name, String> results) {
-        for (Map.Entry<Name, String> entry: results.entrySet()) {
+    public static void printAllResult(LadderRunResult results) {
+        for (Map.Entry<Name, String> entry: results) {
             System.out.println(entry.getKey().getName() + " : " + entry.getValue());
         }
         System.out.println();

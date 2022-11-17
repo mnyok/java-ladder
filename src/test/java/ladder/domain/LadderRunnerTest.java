@@ -18,12 +18,12 @@ public class LadderRunnerTest {
         Ladder ladder = new Ladder(height, names.size(), () -> true);
         Results results = new Results(List.of("1", "2", "3", "4", "5"), names.size());
 
-        Map<Name, String> ladderResult = new LadderRunner(names, ladder).run(height, results);
+        LadderRunResult ladderResult = new LadderRunner(names, ladder).run(height, results);
 
-        assertThat(ladderResult).containsEntry(new Name("a"), "4");
-        assertThat(ladderResult).containsEntry(new Name("b"), "5");
-        assertThat(ladderResult).containsEntry(new Name("c"), "2");
-        assertThat(ladderResult).containsEntry(new Name("d"), "3");
-        assertThat(ladderResult).containsEntry(new Name("e"), "1");
+        assertThat(ladderResult.get(new Name("a"))).containsExactly("4");
+        assertThat(ladderResult.get(new Name("b"))).containsExactly("5");
+        assertThat(ladderResult.get(new Name("c"))).containsExactly("2");
+        assertThat(ladderResult.get(new Name("d"))).containsExactly("3");
+        assertThat(ladderResult.get(new Name("e"))).containsExactly("1");
     }
 }
