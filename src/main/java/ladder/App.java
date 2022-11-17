@@ -23,19 +23,22 @@ public class App {
 
         Map<Name, String> ladderResult = new LadderRunner(names, ladder).run(height, results);
 
-        boolean end = false;
-        while (!end) {
-            end = showResult(ladderResult);
-        }
+        Name name;
+        do {
+            name = InputView.inputShowResult();
+            showResult(name, ladderResult);
+        } while (!isEnd(name));
     }
 
-    private static boolean showResult(Map<Name, String> ladderResult) {
-        Name name = InputView.inputShowResult();
+    private static void showResult(Name name, Map<Name, String> ladderResult) {
         if (name.equals(ALL)) {
             ResultView.printAllResult(ladderResult);
-            return true;
+            return;
         }
         ResultView.printPersonResult(ladderResult.get(name));
-        return false;
+    }
+
+    private static boolean isEnd(Name input) {
+        return input.equals(ALL);
     }
 }
