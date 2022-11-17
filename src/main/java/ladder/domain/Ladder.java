@@ -66,6 +66,14 @@ public class Ladder {
         rightLine.setPoint(pointIndex, Point.LEFT);
     }
 
+    public int getPersonResult(int currentLine, int height) {
+        for (int currentPosition = 0; currentPosition < height; currentPosition++) {
+            Point currentPoint = getLine(currentLine).getPoint(currentPosition);
+            currentLine += currentPoint.getMovingValue();
+        }
+        return currentLine;
+    }
+
     public Line getLine(int index) {
         return lines.get(index);
     }
