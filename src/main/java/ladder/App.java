@@ -20,7 +20,7 @@ public class App {
         ResultView.printLadder(ladder, names.size(), height);
         ResultView.printResults(results);
 
-        LadderRunResult ladderResult = new LadderRunner(names, ladder).run(height, results);
+        LadderRunResult ladderResult = new Players(names).run(ladder, height, results);
 
         Name name;
         do {

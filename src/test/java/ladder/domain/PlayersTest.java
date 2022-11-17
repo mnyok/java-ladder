@@ -4,11 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LadderRunnerTest {
+public class PlayersTest {
 
     @Test
     @DisplayName("가능한 모든 길이 연결된 사다리 결과 테스트")
@@ -18,7 +17,7 @@ public class LadderRunnerTest {
         Ladder ladder = new Ladder(height, names.size(), () -> true);
         Results results = new Results(List.of("1", "2", "3", "4", "5"), names.size());
 
-        LadderRunResult ladderResult = new LadderRunner(names, ladder).run(height, results);
+        LadderRunResult ladderResult = new Players(names).run(ladder, height, results);
 
         assertThat(ladderResult.get(new Name("a"))).containsExactly("4");
         assertThat(ladderResult.get(new Name("b"))).containsExactly("5");
